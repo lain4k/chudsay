@@ -1,4 +1,4 @@
-# Chadsay
-> less cows, more chads
+# Chudsay
+> less ~~cows~~ chads, more chuds
 
-![chadsay](chadsay.png)
+![chudsay](chudsay.png)
