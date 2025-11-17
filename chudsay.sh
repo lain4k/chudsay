@@ -52,7 +52,7 @@ CHUD2='⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀�
 HORIZONTAL_OFFSET2=34
 FREE_LINES2=11
 #
-function setup_random_chad() {
+function setup_random_chud() {
     N=$(expr ${RANDOM} % ${N_CHUDS} + 1)
     CHUD="CHUD${N}"
     CHUD="${!CHUD}"
@@ -65,8 +65,8 @@ function setup_random_chad() {
 
 # Cli
 function usage() {
-    echo "Usage: chadsay <text>"
-    echo "       echo 'text' | chadsay"
+    echo "Usage: chudsay <text>"
+    echo "       echo 'text' | ./chudsay.sh"
 }
 
 
@@ -85,7 +85,7 @@ else
 fi
 
 # Get configuration
-setup_random_chad
+setup_random_chud
 
 # Format message
 IFS=$'\n' read -rd '' -a lines <<<"$message"
@@ -107,15 +107,15 @@ message+="\`"$(printf '%.0s.' $(seq 1 $((max_len + 2))))"\`\n"
 
 message_height=$(expr ${#lines[@]} + 2)
 
-# Normalize chad and message height
+# Normalize chud and message height
 if [ $message_height -gt $FREE_LINES ]; then
-    pad_chad=""
+    pad_chud=""
     n=$((message_height - $FREE_LINES))
     padding=$(printf "%${HORIZONTAL_OFFSET}s")
     for _ in $(seq 1 $n); do
-        pad_chad+="${padding}\n"
+        pad_chud+="${padding}\n"
     done
-    CHUD="${pad_chad}${CHUD}"
+    CHUD="${pad_chud}${CHUD}"
 elif [ $FREE_LINES -gt $message_height ]; then
     n=$(expr $FREE_LINES - $message_height)
     for _ in $(seq 1 $n); do
